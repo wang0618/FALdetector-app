@@ -20,7 +20,8 @@ RUN mkdir -p /app/FALdetector \
     && pip install --build /opt/tmp --no-cache-dir -r requirements.txt \
     && bash weights/download_weights.sh \
     && cd /app \
-    && pip install --no-cache-dir -r requirements.txt
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir --no-cache-dir -U https://code.aliyun.com/wang0618/pywebio/repository/archive.zip
 
 EXPOSE 80
 
