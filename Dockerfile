@@ -3,14 +3,14 @@ FROM python:3.6
 RUN apt-get -qq update && apt-get -qq install -y --fix-missing --no-install-recommends cmake unzip \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+COPY ./ /app
 
-COPY * /app
+WORKDIR /app
 
 RUN mkdir -p /app/FALdetector \
     && wget --no-check-certificate -O /FALdetector.zip "https://github.com/PeterWang512/FALdetector/archive/master.zip" \
     && unzip -d / /FALdetector.zip \
-    && mv FALdetector-master /app/FALdetector \
+    && mv /FALdetector-master /app/FALdetector \
     && rm -f /FALdetector.zip \
     && cd /app/FALdetector \
     && mkdir -p /opt/tmp \
@@ -20,7 +20,7 @@ RUN mkdir -p /app/FALdetector \
     && pip install --build /opt/tmp --no-cache-dir -r requirements.txt \
     && bash weights/download_weights.sh \
     && cd /app \
-    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 80
 
