@@ -11,18 +11,23 @@
 
 ## 本地运行
 
-### Clone project
+### 通过Docker运行
+
+```docker run --name faldetector -p 80:80 wangweimin/faldetector-app```
+
+### 通过代码运行
+**Clone project**
 ```bash
 git clone --recursive https://github.com/wang0618/FALdetector-app.git
 ```
 
-### Install packages
+**Install packages**
  - Install PyTorch (pytorch.org)
  - `pip install -r FALdetector/requirements.txt`
  - `pip install -r requirements.txt`
 
-### Download model weights
+**Download model weights**
 Run `bash FALdetector/weights/download_weights.sh`
 
-### Start app
+**Start app**
 Run `python start_app.py`
